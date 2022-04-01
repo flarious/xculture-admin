@@ -15,7 +15,7 @@ class SideMenu extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width;
 
     return Container(
-            color: Colors.white,
+            color: Color.fromARGB(255, 241, 241, 241),
             child: ListView(
               children: [
                 if(ResponsiveWidget.isSmallScreen(context))
@@ -35,7 +35,7 @@ class SideMenu extends StatelessWidget {
                             text: "Xculture",
                             size: 20,
                             weight: FontWeight.bold,
-                            color: grey,
+                            color: red,
                           ),
                         ),
                         SizedBox(width: _width / 48),
@@ -53,13 +53,14 @@ class SideMenu extends StatelessWidget {
                   children: sideMenuItemRoutes.map((itemName) => SideMenuItem(
                           itemName: itemName == AuthenticationPageRoute ? "Log Out" : itemName,
                           onTap: () {
-                            if(itemName.route == AuthenticationPageRoute){
+                            if(itemName == AuthenticationPageRoute){
 
                             }
                             if (!menuController.isActive(itemName)) {
                               menuController.changeActiveItemTo(itemName);
                               if(ResponsiveWidget.isSmallScreen(context))
                               Get.back();
+                              navigationController.navigateTo(itemName);
                             }
                           },
                       )).toList(),

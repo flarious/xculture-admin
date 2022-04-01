@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:xculture_admin/helpers/local_navigator.dart';
 import 'package:xculture_admin/widgets/side_menu.dart';
 
 class LargeScreen extends StatelessWidget {
@@ -13,9 +14,7 @@ class LargeScreen extends StatelessWidget {
         ),
         Expanded(
           flex: 5,
-          child: Container(
-          color: Color.fromARGB(255, 255, 255, 255),
-          ))
+          child: localNavigator())
       ], 
     );
   }

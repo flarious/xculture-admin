@@ -23,25 +23,25 @@ class SideMenuController extends GetxController {
 
   Widget returnIconFor(String itemName) {
     switch (itemName) {
-      case overviewPageDisplayName:
+      case overviewPageRoute:
         return _customIcon(Icons.trending_up, itemName);
 
-      case UserPageDisplayName:
+      case UserPageRoute:
         return _customIcon(Icons.people_alt_sharp, itemName);
 
-      case ForumPageDisplayName:
+      case ForumPageRoute:
         return _customIcon(Icons.book, itemName);
 
-      case EventPageDisplayName:      
+      case EventPageRoute:      
         return _customIcon(Icons.location_on_rounded, itemName);
 
-      case CommunityPageDisplayName:      
+      case CommunityPageRoute:      
         return _customIcon(Icons.comment, itemName);
 
-     case ReportPageDisplayName:
+     case ReportPageRoute:
         return _customIcon(Icons.report, itemName);
 
-      case AuthenticationPageDisplayName:
+      case AuthenticationPageRoute:
         return _customIcon(Icons.exit_to_app, itemName);
 
       default:
@@ -50,7 +50,7 @@ class SideMenuController extends GetxController {
   }
 
   Widget _customIcon(IconData icon, String itemName) {
-    if (isActive(itemName)) return Icon(icon, size: 22, color: Colors.grey);
+    if (isActive(itemName)) return Icon(icon, size: 25, color: Colors.grey);
 
     return Icon(
       icon,

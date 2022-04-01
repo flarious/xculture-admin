@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:xculture_admin/controllers/navigation_controller.dart';
 import 'package:xculture_admin/controllers/sidemenu_controller.dart';
 import 'package:xculture_admin/layout.dart';
 import 'package:xculture_admin/pages/home.dart';
 import 'package:get/get.dart';
 void main() {
   Get.put(SideMenuController());
+  Get.put(NavigationController());
   runApp(const MyApp());
 }
 

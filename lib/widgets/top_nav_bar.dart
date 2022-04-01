@@ -11,15 +11,15 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
       leading: !ResponsiveWidget.isSmallScreen(context)
           ? Row(
               children: [
-                Container(
-                  //color: Colors.amber,
-                  padding: const EdgeInsets.only(left: 2),
-                  child: Image.asset(
-                    "assets/icons/X3.png",
-                    width: 54,
-                    height: 54,
-                  ),
-                )
+                // Container(
+                //   //color: Colors.amber,
+                //   padding: const EdgeInsets.only(left: 2),
+                //   child: Image.asset(
+                //     "assets/icons/X3.png",
+                //     width: 54,
+                //     height: 54,
+                //   ),
+                // )
               ],
             )
           : IconButton(
@@ -36,8 +36,8 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
         Visibility(
             child: TheTextWidget(
               text: "Xculture",
-              color: grey,
-              size: 20,
+              color: red,
+              size: 25,
               weight: FontWeight.bold,
         )),
         Expanded(child: Container()),
@@ -85,16 +85,16 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           decoration: BoxDecoration(color: Color.fromARGB(255, 255, 240, 240),
           borderRadius: BorderRadius.circular(30)),
           child: Container(
-            padding: EdgeInsets.all(2),
+            padding: EdgeInsets.all(10),
             margin: EdgeInsets.all(2),
             child: CircleAvatar(
-              backgroundColor: Color.fromARGB(255, 194, 193, 193),
-              child: Icon(Icons.person_outline,color: Color.fromARGB(255, 92, 92, 92),),
+              backgroundColor: Color.fromARGB(255, 231, 242, 250),
+              child: Icon(Icons.person_outline,color: Color.fromARGB(255, 78, 78, 78),),
             ),
           ) ,
         )
       ]),
       iconTheme:IconThemeData(
-        color: Colors.black87),
+        color: Color.fromARGB(221, 49, 47, 47)),
       
     );
