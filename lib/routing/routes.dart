@@ -1,42 +1,40 @@
 const rootRoute = "/";
 
 const overviewPageDisplayName = "Overview";
-const overviewPageRoute = "/overview";
+const overviewPageRoute = "Overview";
 
 const UserPageDisplayName = "User";
-const UserPageRoute = "/User";
+const UserPageRoute = "User";
 
 const ForumPageDisplayName = "Forum";
-const ForumPageRoute = "/Forum";
+const ForumPageRoute = "Forum";
 
 const EventPageDisplayName = "Events";
-const EventPageRoute = "/Events";
+const EventPageRoute = "Events";
 
 const CommunityPageDisplayName = "Community";
-const CommunityPageRoute = "/Community";
+const CommunityPageRoute = "Community";
 
 const ReportPageDisplayName = "Report";
-const ReportPageRoute = "/Report";
+const ReportPageRoute = "Report";
 
 
-const authenticationPageDisplayName = "Log out";
-const authenticationPageRoute = "/auth";
+const AuthenticationPageDisplayName = "Log out";
+const AuthenticationPageRoute = "Authentication";
 
-class MenuItem {
-  final String name;
-  final String route;
+// class MenuItem {
+//   final String name;
+//   final String route;
 
-  MenuItem(this.name, this.route);
-}
+//   MenuItem(this.name, this.route);
+// }
 
-
-
-List<MenuItem> sideMenuItemRoutes = [
- MenuItem(overviewPageDisplayName, overviewPageRoute),
- MenuItem(UserPageDisplayName, UserPageRoute),
- MenuItem(ForumPageDisplayName, ForumPageRoute),
- MenuItem(EventPageDisplayName, EventPageRoute),
- MenuItem(CommunityPageDisplayName, CommunityPageRoute),
- MenuItem(ReportPageDisplayName, ReportPageRoute),
- MenuItem(authenticationPageDisplayName, authenticationPageRoute),
+List sideMenuItemRoutes = [
+ overviewPageRoute,
+ UserPageRoute,
+ ForumPageRoute,
+ EventPageRoute,
+ CommunityPageRoute,
+ ReportPageRoute,
+ AuthenticationPageRoute,
 ];

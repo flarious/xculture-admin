@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xculture_admin/constants/style.dart';
 import 'package:xculture_admin/helpers/responsiveness.dart';
-import 'package:xculture_admin/widgets/TheText.dart';
+import 'package:xculture_admin/widgets/theText.dart';
 //import 'package:flutter/material/scaffold.dart';
 
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>

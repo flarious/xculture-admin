@@ -7,7 +7,7 @@ class SmallScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints.expand(),
-      color: Colors.green,
+      color: Color.fromARGB(255, 245, 245, 245),
       
     );
   }

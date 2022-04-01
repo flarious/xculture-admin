@@ -38,7 +38,10 @@ class SideMenuController extends GetxController {
       case CommunityPageDisplayName:      
         return _customIcon(Icons.comment, itemName);
 
-      case authenticationPageDisplayName:
+     case ReportPageDisplayName:
+        return _customIcon(Icons.report, itemName);
+
+      case AuthenticationPageDisplayName:
         return _customIcon(Icons.exit_to_app, itemName);
 
       default:
@@ -51,7 +54,7 @@ class SideMenuController extends GetxController {
 
     return Icon(
       icon,
-      color: isHovering(itemName) ? light : grey,
+      color: isHovering(itemName) ? Color.fromARGB(255, 236, 94, 94) : grey,
     );
   }
 }
