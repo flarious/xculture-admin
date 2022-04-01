@@ -7,7 +7,7 @@ import 'package:xculture_admin/widgets/theText.dart';
 AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
     AppBar(
       //backgroundColor:Color.fromARGB(0, 219, 196, 101),
-      backgroundColor: Color.fromARGB(255, 255, 241, 201),
+      backgroundColor: Colors.transparent,
       leading: !ResponsiveWidget.isSmallScreen(context)
           ? Row(
               children: [

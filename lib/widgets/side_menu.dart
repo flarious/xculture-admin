@@ -15,7 +15,7 @@ class SideMenu extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width;
 
     return Container(
-            color: Color.fromARGB(255, 241, 241, 241),
+            color: Color.fromARGB(255, 255, 255, 255),
             child: ListView(
               children: [
                 if(ResponsiveWidget.isSmallScreen(context))

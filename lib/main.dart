@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'DashBoard',
+      title: 'XCulture DashBoard',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255),
         textTheme: GoogleFonts.poppinsTextTheme(
           Theme.of(context).textTheme
         ).apply(

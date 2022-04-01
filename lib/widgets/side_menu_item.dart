@@ -6,7 +6,7 @@ import 'package:xculture_admin/widgets/vertical_menu_item.dart';
 
 class SideMenuItem extends StatelessWidget {
   final String itemName;
-   final VoidCallback onTap;
+  final VoidCallback onTap;
 
   const SideMenuItem({ Key? key,
   required this.itemName,
