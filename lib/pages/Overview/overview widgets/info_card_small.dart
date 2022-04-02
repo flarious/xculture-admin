@@ -21,18 +21,17 @@ class InfoCardSmallScreen extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-          padding: EdgeInsets.all(24),
+          padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: isActive ? red : Colors.grey, width: .5),
+            color: Color.fromARGB(255, 255, 255, 255),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: isActive ? red : Color.fromARGB(255, 143, 143, 143), width: 0.75),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-            TheTextWidget(text: title, size: 24, weight: FontWeight.w300, color: isActive ? red : grey,),
-            TheTextWidget(text: value, size: 24, weight: FontWeight.bold, color: isActive ? red : Colors.black,)
-
+            TheTextWidget(text: title, size: 18, weight: FontWeight.w300, color: isActive ? red : Color.fromARGB(255, 24, 25, 26),),
+            TheTextWidget(text: value, size: 18, weight: FontWeight.w300, color: isActive ? red : grey,)
           ],)
         ),
       ),

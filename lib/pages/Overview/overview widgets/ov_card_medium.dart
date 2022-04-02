@@ -1,14 +1,17 @@
-
 import 'package:flutter/material.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/info_card.dart';
 
-class OverviewCardsLargeScreen extends StatelessWidget {
+
+class OverviewCardsMediumScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
    double _width = MediaQuery.of(context).size.width;
 
-    return  Row(
+    return  Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
               children: [
                 InfoCard(
                   title: "Total User",
@@ -28,6 +31,10 @@ class OverviewCardsLargeScreen extends StatelessWidget {
                 SizedBox(
                   width: _width / 64,
                 ),
+              ],
+            ),
+            Row(
+              children: [
                 InfoCard(
                   title: "Total Community",
                   value: "3",
@@ -43,7 +50,8 @@ class OverviewCardsLargeScreen extends StatelessWidget {
                   onTap: () {}, 
                   topColor: Colors.orange,
                 ),
-              ],
-            );
+            ],)
+      ],
+    );
   }
 }

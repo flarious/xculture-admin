@@ -11,6 +11,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
       leading: !ResponsiveWidget.isSmallScreen(context)
           ? Row(
               children: [
+                
                 // Container(
                 //   //color: Colors.amber,
                 //   padding: const EdgeInsets.only(left: 2),
@@ -25,7 +26,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           : IconButton(
               icon: Icon(
                 Icons.menu,
-                color: Color.fromARGB(255, 165, 125, 5),
+                color: Color.fromARGB(255, 255, 55, 55),
                 size: 35,
               ),
               onPressed: () {
@@ -37,7 +38,7 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
             child: TheTextWidget(
               text: "Xculture",
               color: red,
-              size: 25,
+              size: 22,
               weight: FontWeight.bold,
         )),
         Expanded(child: Container()),
@@ -62,9 +63,9 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
                   height: 12,
                   padding: EdgeInsets.all(4),
                   decoration: BoxDecoration(
-                    color: Colors.amber,
+                    color: Color.fromARGB(255, 255, 207, 63),
                     borderRadius: BorderRadius.circular(30),
-                    border: Border.all(color: Colors.red,width: 2 )),
+                    border: Border.all(color: Color.fromARGB(255, 238, 100, 90),width: 2 )),
                 ))
               ],    
         ),
@@ -78,17 +79,18 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           text: "admin1", 
           size: 15, 
           color: Colors.grey, 
-          weight: FontWeight.normal
+          weight: FontWeight.bold
           ),
         SizedBox(height:16),
+        SizedBox(width:16),
         Container(
-          decoration: BoxDecoration(color: Color.fromARGB(255, 255, 240, 240),
-          borderRadius: BorderRadius.circular(30)),
+          decoration: BoxDecoration(color: Color.fromARGB(255, 216, 216, 216),
+          borderRadius: BorderRadius.circular(60)),
           child: Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(2),
             margin: EdgeInsets.all(2),
             child: CircleAvatar(
-              backgroundColor: Color.fromARGB(255, 231, 242, 250),
+              backgroundColor: Color.fromARGB(255, 255, 255, 255),
               child: Icon(Icons.person_outline,color: Color.fromARGB(255, 78, 78, 78),),
             ),
           ) ,

@@ -55,10 +55,10 @@ class VerticalMenuItem extends StatelessWidget {
                                 child:TheTextWidget(
                                   text: itemName,
                                   color: menuController.isHovering(itemName)
-                                  ? Colors.white: grey,
+                                  ? Color.fromARGB(255, 226, 99, 99): grey,
                                   size: 18,
                                   weight: FontWeight.normal,
-                            ))
+                            )) 
                           else
                             Flexible(
                                 child: TheTextWidget(
