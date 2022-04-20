@@ -31,7 +31,7 @@ class ForumGraphSmall extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           TheTextWidget(
-                            text: "Revenue Chart",
+                            text: "Amount Forum in Server",
                             size: 20,
                             weight: FontWeight.bold,
                             color: grey,

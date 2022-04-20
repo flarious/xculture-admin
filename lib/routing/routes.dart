@@ -1,4 +1,4 @@
-const rootRoute = "/";
+//const rootRoute = "/";
 
 const overviewPageDisplayName = "Overview";
 const overviewPageRoute = "Overview";
@@ -20,7 +20,7 @@ const ReportPageRoute = "Report";
 
 
 const AuthenticationPageDisplayName = "Log out";
-const AuthenticationPageRoute = "Authentication";
+const AuthenticationPageRoute = "Auth";
 
 // class MenuItem {
 //   final String name;
@@ -37,4 +37,14 @@ List sideMenuItemRoutes = [
  CommunityPageRoute,
  ReportPageRoute,
  AuthenticationPageRoute,
-];
+ ];
+
+// List<MenuItem> sideMenuItemRoutes = [
+//   MenuItem(overviewPageDisplayName,overviewPageRoute),
+//   MenuItem(UserPageDisplayName,UserPageRoute),
+//   MenuItem(ForumPageDisplayName,ForumPageRoute),
+//   MenuItem(EventPageDisplayName,EventPageRoute),
+//   MenuItem(CommunityPageDisplayName,CommunityPageRoute),
+//   MenuItem(ReportPageDisplayName,ReportPageRoute),
+//   MenuItem(AuthenticationPageDisplayName,AuthenticationPageRoute),
+// ];

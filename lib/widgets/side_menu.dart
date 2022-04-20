@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:xculture_admin/constants/controllers.dart';
 import 'package:xculture_admin/constants/style.dart';
 import 'package:xculture_admin/helpers/responsiveness.dart';
+import 'package:xculture_admin/pages/Authentication/authentication.dart';
 import 'package:xculture_admin/routing/routes.dart';
 import 'package:xculture_admin/widgets/TheText.dart';
 import 'package:xculture_admin/widgets/side_menu_item.dart';
@@ -54,7 +55,7 @@ class SideMenu extends StatelessWidget {
                           itemName: itemName == AuthenticationPageRoute ? "Log Out" : itemName,
                           onTap: () {
                             if(itemName == AuthenticationPageRoute){
-
+                                Get.offAll(()=> AuthenticationPage());
                             }
                             if (!menuController.isActive(itemName)) {
                               menuController.changeActiveItemTo(itemName);

@@ -7,6 +7,7 @@ import 'package:xculture_admin/pages/Overview/overview%20widgets/forum_graph_lar
 import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_large.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_medium.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_small.dart';
+import 'package:xculture_admin/pages/Overview/overview%20widgets/user_info_table.dart';
 import 'package:xculture_admin/widgets/theText.dart';
 
 class OverviewPage extends StatelessWidget {
@@ -45,7 +46,8 @@ class OverviewPage extends StatelessWidget {
               if(!ResponsiveWidget.isSmallScreen(context))
                 ForumGraphLarge()
               else
-              ForumGraphSmall()
+              ForumGraphSmall(),
+              UserInfoTable()
           ],
         ),)
         ],

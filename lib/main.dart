@@ -3,8 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:xculture_admin/controllers/navigation_controller.dart';
 import 'package:xculture_admin/controllers/sidemenu_controller.dart';
 import 'package:xculture_admin/layout.dart';
+import 'package:xculture_admin/pages/404_error/not_found_page.dart';
+import 'package:xculture_admin/pages/Authentication/authentication.dart';
+import 'package:xculture_admin/pages/Report/report.dart';
+import 'package:xculture_admin/pages/User/user.dart';
 import 'package:xculture_admin/pages/home.dart';
 import 'package:get/get.dart';
+import 'package:xculture_admin/routing/routes.dart';
 void main() {
   Get.put(SideMenuController());
   Get.put(NavigationController());
@@ -17,6 +22,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      // initialRoute: AuthenticationPageRoute,
+      // unknownRoute: GetPage(name: "Not Found", page: ()=> PageNotFound(),transition: Transition.fadeIn),
+      // getPages: [
+      //   GetPage(name: rootRoute, page: ()=> SiteLayout()),
+      //   GetPage(name: AuthenticationPageRoute, page: ()=> AuthenticationPage()),
+      // ],
       debugShowCheckedModeBanner: false,
       title: 'XCulture DashBoard',
       theme: ThemeData(
@@ -32,8 +43,9 @@ class MyApp extends StatelessWidget {
         }),
         primaryColor: Colors.red,
       ),
-      home: SiteLayout(),
-      //
+    home: AuthenticationPage(),
+    // home: ReportPage(),
+    //home: UserPage(),
     );
   }
 }

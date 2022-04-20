@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xculture_admin/constants/controllers.dart';
 import 'package:xculture_admin/helpers/responsiveness.dart';
+import 'package:xculture_admin/pages/Overview/overview%20widgets/user_info_table.dart';
 import 'package:xculture_admin/widgets/theText.dart';
 
 class UserPage extends StatelessWidget {
@@ -23,6 +24,13 @@ class UserPage extends StatelessWidget {
                       color: Color.fromARGB(255, 36, 36, 36),
                     ),
                   ),
+              ],
+            )
+          ),
+          Expanded(child: 
+            ListView(
+              children: [
+                UserInfoTable()
               ],
             )
           )
