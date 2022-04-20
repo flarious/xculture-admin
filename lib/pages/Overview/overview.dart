@@ -8,6 +8,9 @@ import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_large.d
 import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_medium.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_small.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/user_info_table.dart';
+import 'package:xculture_admin/pages/Report/report_graph_large.dart';
+import 'package:xculture_admin/pages/Report/report_graph_small.dart';
+import 'package:xculture_admin/pages/Report/report_table.dart';
 import 'package:xculture_admin/widgets/theText.dart';
 
 class OverviewPage extends StatelessWidget {
@@ -45,9 +48,16 @@ class OverviewPage extends StatelessWidget {
                 OverviewCardsSmallScreen(),
               if(!ResponsiveWidget.isSmallScreen(context))
                 ForumGraphLarge()
+               //ReportGraphLarge()
               else
               ForumGraphSmall(),
-              UserInfoTable()
+              if(!ResponsiveWidget.isSmallScreen(context))
+                ReportGraphLarge()
+               //ReportGraphLarge()
+              else
+              ReportGraphSmall(),
+             // UserInfoTable(),
+             // ReportTable()
           ],
         ),)
         ],
