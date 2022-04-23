@@ -42,13 +42,13 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
               weight: FontWeight.bold,
         )),
         Expanded(child: Container()),
-        IconButton(
-          icon: Icon(
-            Icons.settings,
-            color: Colors.black54,
-          ),
-          onPressed: () {},
-        ),
+        // IconButton(
+        //   icon: Icon(
+        //     Icons.settings,
+        //     color: Colors.black54,
+        //   ),
+        //   onPressed: () {},
+        // ),
         Stack(
           children: [
             IconButton(

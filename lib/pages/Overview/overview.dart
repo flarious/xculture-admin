@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xculture_admin/constants/controllers.dart';
 import 'package:xculture_admin/helpers/responsiveness.dart';
-import 'package:xculture_admin/pages/Overview/overview%20widgets/forum_graphSmall.dart';
-import 'package:xculture_admin/pages/Overview/overview%20widgets/forum_graph_large.dart';
+import 'package:xculture_admin/pages/Forum/forum_graphSmall.dart';
+import 'package:xculture_admin/pages/Forum/forum_graph_large.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_large.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_medium.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_small.dart';
@@ -59,8 +59,9 @@ class OverviewPage extends StatelessWidget {
              // UserInfoTable(),
              // ReportTable()
           ],
-        ),)
-        ],
+        ),
+        )
+      ],
     );
   }
 }

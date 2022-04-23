@@ -7,7 +7,7 @@ import 'package:flutter/rendering.dart';
 
 /// Example without a datasource
 
-class ReportTable extends StatelessWidget {
+class ForumTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +31,7 @@ class ReportTable extends StatelessWidget {
                 width: 10,
               ),
               TheTextWidget(
-                text: "Report List",
+                text: "Forum List",
                 color: Colors.black,
                 size: 25,
                 weight: FontWeight.bold,
@@ -39,7 +39,7 @@ class ReportTable extends StatelessWidget {
             ],
           ),
           DataTable2(
-              columnSpacing: 5,
+              columnSpacing: 3,
               horizontalMargin: 1,
               minWidth: 200,
               columns: [
@@ -48,13 +48,16 @@ class ReportTable extends StatelessWidget {
                   size: ColumnSize.L,
                 ),
                 DataColumn(
-                  label: Text('Report Type'),
-                ),
-                DataColumn(
                   label: Text('Owner'),
                 ),
                 DataColumn(
-                  label: Text('Amount'),
+                  label: Text('Date'),
+                ),
+                DataColumn(
+                  label: Text('Viewed'),
+                ),
+                DataColumn(
+                  label: Text('Liked'),
                 ),
               ],
               rows: List<DataRow>.generate(
@@ -67,14 +70,14 @@ class ReportTable extends StatelessWidget {
                           color: Colors.black,
                         )),
                         DataCell(TheTextWidget(
-                          text: "Community",
+                          text: "Nut Shokun simp",
                           size: 14,
                           weight: FontWeight.normal,
                           color: Colors.black,
                         )),
                         DataCell(
                           TheTextWidget(
-                            text: "Peter Paker",
+                            text: "01-01-2022",
                             color: Colors.black,
                             weight: FontWeight.normal,
                             size: 14,
@@ -86,7 +89,14 @@ class ReportTable extends StatelessWidget {
                             color: Color.fromARGB(255, 151, 0, 0),
                             weight: FontWeight.bold,
                             size: 14,
-                            
+                          ),
+                        ),
+                        DataCell(
+                          TheTextWidget(
+                            text: "2",
+                            color: Color.fromARGB(255, 151, 0, 0),
+                            weight: FontWeight.bold,
+                            size: 14,
                           ),
                         ),
                       ]
