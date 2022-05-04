@@ -63,7 +63,7 @@ class VerticalMenuItem extends StatelessWidget {
                             Flexible(
                                 child: TheTextWidget(
                                   text: itemName,
-                                  color: Colors.white,
+                                  color: Color.fromARGB(255, 255, 156, 156),
                                   size: 18,
                                   weight: FontWeight.bold,
                             ))
