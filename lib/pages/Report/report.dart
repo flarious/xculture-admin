@@ -35,19 +35,18 @@ class ReportPage extends StatelessWidget {
           ),
           Expanded(child: ListView(
           children: [
-              if (ResponsiveWidget.isLargeScreen(context) ||
-                  ResponsiveWidget.isMediumScreen(context))
-                if (ResponsiveWidget.isCustomSize(context))
-                  ReportCardMediumScreen()
-                else
-                  ReportCardLargeScreen()
+            if (ResponsiveWidget.isLargeScreen(context) || ResponsiveWidget.isMediumScreen(context))
+              if (ResponsiveWidget.isCustomSize(context))
+                ReportCardMediumScreen()
               else
-                ReportCardSmallScreen(),
-              if(!ResponsiveWidget.isSmallScreen(context))
-                ReportGraphLarge()
-              else
-              ReportGraphSmall(),
-              ReportTable()
+                ReportCardLargeScreen()
+            else
+              ReportCardSmallScreen(),
+            if(!ResponsiveWidget.isSmallScreen(context))
+              ReportGraphLarge()
+            else
+            ReportGraphSmall(),
+            ReportTable()
           ],
         ),)
         ],

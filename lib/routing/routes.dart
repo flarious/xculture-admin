@@ -18,9 +18,12 @@ const CommunityPageRoute = "Community";
 const ReportPageDisplayName = "Report";
 const ReportPageRoute = "Report";
 
+const ReportDetailPageDisplayName = "Report Detail";
+const ReportDetailPageRoute = "ReportDetail";
+
 
 const AuthenticationPageDisplayName = "Log out";
-const AuthenticationPageRoute = "Auth";
+const AuthenticationPageRoute = "AuthenticationPage";
 
 // class MenuItem {
 //   final String name;

@@ -2,12 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:xculture_admin/constants/style.dart';
 import 'package:xculture_admin/helpers/api.dart';
+import 'package:xculture_admin/pages/Forum/forum_data.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/bar_chart.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/stat_data.dart';
-import 'package:xculture_admin/pages/Report/report_data.dart';
 import 'package:xculture_admin/widgets/theText.dart';
 
-class ReportGraphSmall extends StatelessWidget {
+class ForumGraphSmall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class ReportGraphSmall extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           TheTextWidget(
-                            text: "Amount Report in Server",
+                            text: "Amount of Forum in Server",
                             size: 20,
                             weight: FontWeight.bold,
                             color: grey,
@@ -42,7 +42,7 @@ class ReportGraphSmall extends StatelessWidget {
                             width: 600,
                             height: 200,
                             child: FutureBuilder<List<GraphData>>(
-                              future: API.getReportedGraph(),
+                              future: API.getForumGraph(),
                               builder: (context, AsyncSnapshot<List<GraphData>> snapshot) {
                                 if (snapshot.hasData) {
                                   return SimpleBarChart.fromData(snapshot.data!);
@@ -52,7 +52,7 @@ class ReportGraphSmall extends StatelessWidget {
                                 }
                               }
                             )
-                          ),
+                          )
                         ],
                       ),
                     ),
@@ -64,7 +64,7 @@ class ReportGraphSmall extends StatelessWidget {
                     Container(
                       height: 260,
                       child: FutureBuilder<StatData>(
-                        future: API.getReportedStat(),
+                        future: API.getForumStat(),
                         builder: (context, AsyncSnapshot<StatData> snapshot) {
                           if (snapshot.hasData) {
                             return Column(
@@ -73,11 +73,11 @@ class ReportGraphSmall extends StatelessWidget {
                                 Row(
                                   children: [
                                     StatDataCard(
-                                      title: "Forums' Report",
+                                      title: "This Month",
                                       amount: snapshot.data!.firstData.toString(),
                                     ),
                                     StatDataCard(
-                                      title: "Events' Report",
+                                      title: "Last Months",
                                       amount: snapshot.data!.secondData.toString(),
                                     ),
                                   ],
@@ -86,11 +86,11 @@ class ReportGraphSmall extends StatelessWidget {
                                 Row(
                                   children: [
                                     StatDataCard(
-                                      title: "Communities' Report",
+                                      title: "Last 3 Months",
                                       amount: snapshot.data!.thirdData.toString(),
                                     ),
                                     StatDataCard(
-                                      title: "All Report",
+                                      title: "All Forum",
                                       amount: snapshot.data!.fourthData.toString(),
                                     ),
                                   ],
