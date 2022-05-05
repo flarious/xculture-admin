@@ -3,13 +3,23 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:xculture_admin/constants/controllers.dart';
 import 'package:xculture_admin/constants/style.dart';
+import 'package:xculture_admin/helpers/auth.dart';
 import 'package:xculture_admin/helpers/responsiveness.dart';
 import 'package:xculture_admin/layout.dart';
 import 'package:xculture_admin/widgets/theText.dart';
 
+class AuthenticationPage extends StatefulWidget {
+  const AuthenticationPage({ Key? key }) : super(key: key);
 
-class AuthenticationPage extends StatelessWidget {
-  const AuthenticationPage({Key? key}) : super(key: key);
+  @override
+  State<AuthenticationPage> createState() => _AuthenticationPageState();
+}
+
+class _AuthenticationPageState extends State<AuthenticationPage> {
+  final _formKey = GlobalKey<FormState>();
+  String? email;
+  String? password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,55 +65,64 @@ class AuthenticationPage extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              TextField(
-                decoration: InputDecoration(
-                    labelText: "Email address",
-                    hintText: "admin1@gmail.com",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20))),
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      onSaved: (newValue) => email = newValue,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Please enter your email";
+                        } 
+
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: "Email address",
+                        hintText: "Enter your email",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                        )
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      obscureText: true,
+                      onSaved: (newValue) => password = newValue,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Please enter your password";
+                        } 
+
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        labelText: "Password",
+                        hintText: "Enter your password",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)
+                        )
+                      ),
+                    )
+                  ]
+                )
               ),
               SizedBox(
                 height: 15,
               ),
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    labelText: "Password",
-                    hintText: "123456",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20))),
-              ),
-               SizedBox(
-                height: 15,
-              ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Row(
-              //       children: [
-              //         Checkbox(value: true, onChanged: (value){}),
-              //         TheTextWidget(
-              //           text: "Remeber Me",
-              //           color: red,
-              //           weight: FontWeight.normal,
-              //           size: 12,),
-              //       ],
-              //     ),
-
-              //     TheTextWidget(
-              //       text: "Forgot password?",
-              //       color: red,
-              //       weight: FontWeight.normal,
-              //       size: 12,
-              //     )
-              //   ],
-              // ),
-                SizedBox(
-                height: 15,
-              ),
               InkWell(
-                onTap: (){
-                  Get.offAll(()=> SiteLayout());
+                onTap: () async {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    var success = await Auth.signIn(email!, password!);
+                    if (success) {
+                      print("Signed In");
+                      Get.offAll(()=> SiteLayout());
+                    }
+                  }
                 },
                 child: Container(
                   decoration: BoxDecoration(color: red, 
@@ -119,7 +138,6 @@ class AuthenticationPage extends StatelessWidget {
                   ),
                 ),
               ),
-
               SizedBox(height: 15,),
             ],
           ),

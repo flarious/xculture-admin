@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:xculture_admin/constants/style.dart';
 import 'package:xculture_admin/helpers/api.dart';
-import 'package:xculture_admin/widgets/TheText.dart';
+import 'package:xculture_admin/widgets/theText.dart';
 import 'package:data_table_2/data_table_2.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
 /// Example without a datasource
 
-class ForumTable extends StatelessWidget {
+
+class ReportDetailTable extends StatelessWidget {
+  const ReportDetailTable({ Key? key, required this.itemId }) : super(key: key);
+
+  final String itemId;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,88 +31,76 @@ class ForumTable extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Row(
-            children: const [
+            children: [
               SizedBox(
                 width: 10,
               ),
               TheTextWidget(
-                text: "Forum List",
+                text: "Report List",
                 color: Colors.black,
                 size: 25,
                 weight: FontWeight.bold,
               ),
             ],
           ),
-          FutureBuilder<List<Forum>>(
-            future: API.getForums(),
-            builder: (context, AsyncSnapshot<List<Forum>> snapshot) {
+          FutureBuilder<List<ReportDetail>>(
+            future: API.getReportDetail(itemId),
+            builder: (context, AsyncSnapshot<List<ReportDetail>> snapshot) {
               if (snapshot.hasData) {
                 return DataTable2(
-                  columnSpacing: 3,
+                  columnSpacing: 5,
                   horizontalMargin: 1,
                   minWidth: 200,
-                  columns: const [
+                  columns: [
                     DataColumn2(
-                      label: Text("Title Name"),
+                      label: Text("Topics"),
                       size: ColumnSize.L,
                     ),
                     DataColumn(
-                      label: Text('Owner'),
+                      label: Text('Additional Detail'),
                     ),
                     DataColumn(
-                      label: Text('Last Updated'),
+                      label: Text('Reporter'),
                     ),
                     DataColumn(
-                      label: Text('Viewed'),
-                    ),
-                    DataColumn(
-                      label: Text('Liked'),
+                      label: Text('Report Date'),
                     ),
                   ],
-                  rows: snapshot.data!.map((forum) => DataRow(
-                    cells: 
-                      [
+                  rows: snapshot.data!.map((report) => DataRow(
+                      cells: [
                         DataCell(
                           TheTextWidget(
-                            text: forum.title, 
+                            text: report.topics, 
+                            size: 14, 
+                            color: Colors.black, 
+                            weight: FontWeight.normal
+                          ),
+                        ),
+                        DataCell(
+                          TheTextWidget(
+                            text: report.detail,
+                            size: 14, 
+                            color: Colors.black, 
+                            weight: FontWeight.normal
+                          ),
+                        ),
+                        DataCell(
+                          TheTextWidget(
+                            text: report.reporter.name, 
+                            size: 14, 
+                            color: Colors.black, 
+                            weight: FontWeight.normal
+                          ),
+                        ),
+                        DataCell(
+                          TheTextWidget(
+                            text: DateFormat('MMMM dd, yyyy – HH:mm a').format(DateTime.parse(report.reportDate).toLocal()), 
                             size: 14, 
                             color: Colors.black, 
                             weight: FontWeight.normal
                           )
                         ),
-                        DataCell(
-                          TheTextWidget(
-                            text: forum.owner.name, 
-                            size: 14, 
-                            color: Colors.black, 
-                            weight: FontWeight.normal
-                          )
-                        ),
-                        DataCell(
-                          TheTextWidget(
-                            text: DateFormat('MMMM dd, yyyy – HH:mm a').format(DateTime.parse(forum.lastUpdated).toLocal()), 
-                            size: 14, 
-                            color: Colors.black, 
-                            weight: FontWeight.normal
-                          )
-                        ),
-                        DataCell(
-                          TheTextWidget(
-                            text: forum.viewed.toString(), 
-                            size: 14, 
-                            color: Color.fromARGB(255, 151, 0, 0), 
-                            weight: FontWeight.bold
-                          )
-                        ),
-                        DataCell(
-                          TheTextWidget(
-                            text: forum.liked.toString(), 
-                            size: 14, 
-                            color: Color.fromARGB(255, 151, 0, 0), 
-                            weight: FontWeight.bold
-                          )
-                        ),
-                      ]
+                      ],
                     )
                   ).toList()
                 );

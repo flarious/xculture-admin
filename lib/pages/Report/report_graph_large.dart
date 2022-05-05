@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:xculture_admin/constants/style.dart';
+import 'package:xculture_admin/helpers/api.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/bar_chart.dart';
+import 'package:xculture_admin/pages/Overview/overview%20widgets/stat_data.dart';
 import 'package:xculture_admin/pages/Report/report_bar_chart.dart';
 import 'package:xculture_admin/pages/Report/report_data.dart';
 import 'package:xculture_admin/widgets/theText.dart';
@@ -37,9 +39,20 @@ class ReportGraphLarge extends StatelessWidget {
                             color: grey,
                           ),
                           Container(
-                              width: 600,
-                              height: 200,
-                              child: SimpleReportBarChart.withSampleReportData()),
+                            width: 600,
+                            height: 200,
+                            child: FutureBuilder<List<GraphData>>(
+                              future: API.getReportedGraph(),
+                              builder: (context, AsyncSnapshot<List<GraphData>> snapshot) {
+                                if (snapshot.hasData) {
+                                  return SimpleBarChart.fromData(snapshot.data!);
+                                }
+                                else {
+                                  return const CircularProgressIndicator();
+                                }
+                              }
+                            )
+                          ),
                         ],
                       ),
                     ),
@@ -49,35 +62,45 @@ class ReportGraphLarge extends StatelessWidget {
                       color: grey,
                     ),
                     Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Row(
-                            children: [
-                              ReportData(
-                                title: "Forum's Report",
-                                amount: "5",
-                              ),
-                              ReportData(
-                                title: "Event's Report",
-                                amount: "20",
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 30,),
-                          Row(
-                            children: [
-                              ReportData(
-                                title: "Community's Report",
-                                amount: "44",
-                              ),
-                              ReportData(
-                                title: "All Report",
-                                amount: "69",
-                              ),
-                            ],
-                          ),
-                        ],
+                      child: FutureBuilder<StatData>(
+                        future: API.getReportedStat(),
+                        builder: (context, AsyncSnapshot<StatData> snapshot) {
+                          if (snapshot.hasData) {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Row(
+                                  children: [
+                                    StatDataCard(
+                                      title: "Forums' Report",
+                                      amount: snapshot.data!.firstData.toString(),
+                                    ),
+                                    StatDataCard(
+                                      title: "Events' Report",
+                                      amount: snapshot.data!.secondData.toString(),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 30,),
+                                Row(
+                                  children: [
+                                    StatDataCard(
+                                      title: "Communities' Report",
+                                      amount: snapshot.data!.thirdData.toString(),
+                                    ),
+                                    StatDataCard(
+                                      title: "All Report",
+                                      amount: snapshot.data!.fourthData.toString(),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            );
+                          }
+                          else {
+                            return const CircularProgressIndicator();
+                          }
+                        },
                       ),
                     ),
                   ],

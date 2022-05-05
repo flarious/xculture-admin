@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xculture_admin/constants/controllers.dart';
 import 'package:xculture_admin/helpers/responsiveness.dart';
+import 'package:xculture_admin/pages/Event/event_graph_large.dart';
+import 'package:xculture_admin/pages/Event/event_graph_small.dart';
+import 'package:xculture_admin/pages/Event/event_table.dart';
 import 'package:xculture_admin/widgets/theText.dart';
+
 
 class EventPage extends StatelessWidget {
   //const EventPage({ Key? key }) : super(key: key);
@@ -25,7 +29,18 @@ class EventPage extends StatelessWidget {
                   ),
               ],
             )
-          )
+          ),
+          Expanded(
+          child: ListView(
+            children: [
+                if(!ResponsiveWidget.isSmallScreen(context))
+                  EventGraphLarge()
+                else
+                  EventGraphSmall(),
+                EventTable()
+            ],
+          ),
+        )
         ],
     );
   }

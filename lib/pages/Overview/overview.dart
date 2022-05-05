@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xculture_admin/constants/controllers.dart';
 import 'package:xculture_admin/helpers/responsiveness.dart';
-import 'package:xculture_admin/pages/Forum/forum_graphSmall.dart';
+import 'package:xculture_admin/pages/Community/community_graph_large.dart';
+import 'package:xculture_admin/pages/Community/community_graph_small.dart';
+import 'package:xculture_admin/pages/Event/event_graph_large.dart';
+import 'package:xculture_admin/pages/Event/event_graph_small.dart';
+import 'package:xculture_admin/pages/Forum/forum_graph_small.dart';
 import 'package:xculture_admin/pages/Forum/forum_graph_large.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_large.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_medium.dart';
 import 'package:xculture_admin/pages/Overview/overview%20widgets/ov_card_small.dart';
-import 'package:xculture_admin/pages/Overview/overview%20widgets/user_info_table.dart';
+import 'package:xculture_admin/pages/User/user_info_table.dart';
 import 'package:xculture_admin/pages/Report/report_graph_large.dart';
 import 'package:xculture_admin/pages/Report/report_graph_small.dart';
 import 'package:xculture_admin/pages/Report/report_table.dart';
@@ -51,6 +55,16 @@ class OverviewPage extends StatelessWidget {
                //ReportGraphLarge()
               else
               ForumGraphSmall(),
+              if(!ResponsiveWidget.isSmallScreen(context))
+                EventGraphLarge()
+               //ReportGraphLarge()
+              else
+              EventGraphSmall(),
+              if(!ResponsiveWidget.isSmallScreen(context))
+                CommuGraphLarge()
+               //ReportGraphLarge()
+              else
+              CommuGraphSmall(),
               if(!ResponsiveWidget.isSmallScreen(context))
                 ReportGraphLarge()
                //ReportGraphLarge()

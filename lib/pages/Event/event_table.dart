@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:xculture_admin/constants/style.dart';
-import 'package:xculture_admin/helpers/api.dart';
-import 'package:xculture_admin/widgets/TheText.dart';
+import 'package:xculture_admin/widgets/theText.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 
+import '../../helpers/api.dart';
+
 /// Example without a datasource
 
-class ForumTable extends StatelessWidget {
+class EventTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,16 +34,16 @@ class ForumTable extends StatelessWidget {
                 width: 10,
               ),
               TheTextWidget(
-                text: "Forum List",
+                text: "Event List",
                 color: Colors.black,
                 size: 25,
                 weight: FontWeight.bold,
               ),
             ],
           ),
-          FutureBuilder<List<Forum>>(
-            future: API.getForums(),
-            builder: (context, AsyncSnapshot<List<Forum>> snapshot) {
+          FutureBuilder<List<Event>>(
+            future: API.getEvents(),
+            builder: (context, AsyncSnapshot<List<Event>> snapshot) {
               if (snapshot.hasData) {
                 return DataTable2(
                   columnSpacing: 3,
@@ -50,7 +51,7 @@ class ForumTable extends StatelessWidget {
                   minWidth: 200,
                   columns: const [
                     DataColumn2(
-                      label: Text("Title Name"),
+                      label: Text("Event Name"),
                       size: ColumnSize.L,
                     ),
                     DataColumn(
@@ -60,18 +61,21 @@ class ForumTable extends StatelessWidget {
                       label: Text('Last Updated'),
                     ),
                     DataColumn(
-                      label: Text('Viewed'),
+                      label: Text('Event Date'),
                     ),
                     DataColumn(
-                      label: Text('Liked'),
+                      label: Text('Location'),
+                    ),
+                    DataColumn(
+                      label: Text('Interested'),
                     ),
                   ],
-                  rows: snapshot.data!.map((forum) => DataRow(
+                  rows: snapshot.data!.map((event) => DataRow(
                     cells: 
                       [
                         DataCell(
                           TheTextWidget(
-                            text: forum.title, 
+                            text: event.name, 
                             size: 14, 
                             color: Colors.black, 
                             weight: FontWeight.normal
@@ -79,7 +83,7 @@ class ForumTable extends StatelessWidget {
                         ),
                         DataCell(
                           TheTextWidget(
-                            text: forum.owner.name, 
+                            text: event.owner.name, 
                             size: 14, 
                             color: Colors.black, 
                             weight: FontWeight.normal
@@ -87,7 +91,7 @@ class ForumTable extends StatelessWidget {
                         ),
                         DataCell(
                           TheTextWidget(
-                            text: DateFormat('MMMM dd, yyyy – HH:mm a').format(DateTime.parse(forum.lastUpdated).toLocal()), 
+                            text: DateFormat('MMMM dd, yyyy – HH:mm a').format(DateTime.parse(event.lastUpdated).toLocal()), 
                             size: 14, 
                             color: Colors.black, 
                             weight: FontWeight.normal
@@ -95,15 +99,23 @@ class ForumTable extends StatelessWidget {
                         ),
                         DataCell(
                           TheTextWidget(
-                            text: forum.viewed.toString(), 
+                            text: DateFormat('MMMM dd, yyyy – HH:mm a').format(DateTime.parse(event.eventDate).toLocal()), 
                             size: 14, 
-                            color: Color.fromARGB(255, 151, 0, 0), 
-                            weight: FontWeight.bold
+                            color: Colors.black, 
+                            weight: FontWeight.normal
                           )
                         ),
                         DataCell(
                           TheTextWidget(
-                            text: forum.liked.toString(), 
+                            text: event.location, 
+                            size: 14, 
+                            color: Colors.black, 
+                            weight: FontWeight.normal
+                          )
+                        ),
+                        DataCell(
+                          TheTextWidget(
+                            text: event.interested.toString(), 
                             size: 14, 
                             color: Color.fromARGB(255, 151, 0, 0), 
                             weight: FontWeight.bold

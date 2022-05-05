@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xculture_admin/constants/style.dart';
 import 'package:xculture_admin/helpers/api.dart';
-import 'package:xculture_admin/widgets/TheText.dart';
+import 'package:xculture_admin/widgets/theText.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -9,7 +9,7 @@ import 'package:intl/intl.dart';
 
 /// Example without a datasource
 
-class ForumTable extends StatelessWidget {
+class CommuTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,16 +33,17 @@ class ForumTable extends StatelessWidget {
                 width: 10,
               ),
               TheTextWidget(
-                text: "Forum List",
+                text: "Community List",
                 color: Colors.black,
                 size: 25,
                 weight: FontWeight.bold,
               ),
             ],
           ),
-          FutureBuilder<List<Forum>>(
-            future: API.getForums(),
-            builder: (context, AsyncSnapshot<List<Forum>> snapshot) {
+
+          FutureBuilder<List<Community>>(
+            future: API.getCommus(),
+            builder: (context, AsyncSnapshot<List<Community>> snapshot) {
               if (snapshot.hasData) {
                 return DataTable2(
                   columnSpacing: 3,
@@ -50,7 +51,7 @@ class ForumTable extends StatelessWidget {
                   minWidth: 200,
                   columns: const [
                     DataColumn2(
-                      label: Text("Title Name"),
+                      label: Text("Community Name"),
                       size: ColumnSize.L,
                     ),
                     DataColumn(
@@ -60,18 +61,18 @@ class ForumTable extends StatelessWidget {
                       label: Text('Last Updated'),
                     ),
                     DataColumn(
-                      label: Text('Viewed'),
+                      label: Text('Type'),
                     ),
                     DataColumn(
-                      label: Text('Liked'),
+                      label: Text('Members'),
                     ),
                   ],
-                  rows: snapshot.data!.map((forum) => DataRow(
+                  rows: snapshot.data!.map((commu) => DataRow(
                     cells: 
                       [
                         DataCell(
                           TheTextWidget(
-                            text: forum.title, 
+                            text: commu.name, 
                             size: 14, 
                             color: Colors.black, 
                             weight: FontWeight.normal
@@ -79,7 +80,7 @@ class ForumTable extends StatelessWidget {
                         ),
                         DataCell(
                           TheTextWidget(
-                            text: forum.owner.name, 
+                            text: commu.owner.name, 
                             size: 14, 
                             color: Colors.black, 
                             weight: FontWeight.normal
@@ -87,7 +88,7 @@ class ForumTable extends StatelessWidget {
                         ),
                         DataCell(
                           TheTextWidget(
-                            text: DateFormat('MMMM dd, yyyy – HH:mm a').format(DateTime.parse(forum.lastUpdated).toLocal()), 
+                            text: DateFormat('MMMM dd, yyyy – HH:mm a').format(DateTime.parse(commu.lastUpdated).toLocal()), 
                             size: 14, 
                             color: Colors.black, 
                             weight: FontWeight.normal
@@ -95,7 +96,7 @@ class ForumTable extends StatelessWidget {
                         ),
                         DataCell(
                           TheTextWidget(
-                            text: forum.viewed.toString(), 
+                            text: commu.type, 
                             size: 14, 
                             color: Color.fromARGB(255, 151, 0, 0), 
                             weight: FontWeight.bold
@@ -103,7 +104,7 @@ class ForumTable extends StatelessWidget {
                         ),
                         DataCell(
                           TheTextWidget(
-                            text: forum.liked.toString(), 
+                            text: commu.members.toString(), 
                             size: 14, 
                             color: Color.fromARGB(255, 151, 0, 0), 
                             weight: FontWeight.bold
