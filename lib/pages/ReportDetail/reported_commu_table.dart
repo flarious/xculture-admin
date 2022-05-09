@@ -46,70 +46,84 @@ class ReportedCommuTable extends StatelessWidget {
                 weight: FontWeight.bold,
               ),
               Spacer(),
-              ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context, 
-                    builder: (context) => AlertDialog(
-                      title: const Text("Delete And Ban"),
-                      content: const Text("You confirm that this user has violated our rules and need to be punished?\nThis community will be deleted and the user will be banned."),
-                      actions: [
-                        TextButton(
-                          onPressed: (){
-                            //No
-                            Navigator.pop(context);
-                          }, 
-                          child: const Text("No", style: TextStyle(color: Colors.grey)),
-                        ),
-                        TextButton(
-                          onPressed: () async {
-                            var success = await API.deleteCommuAndBan(commuId);
-                            if(success) {
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context, 
+                      builder: (context) => AlertDialog(
+                        title: const Text("Delete And Ban"),
+                        content: const Text("You confirm that this user has violated our rules and need to be punished?\nThis community will be deleted and the user will be banned."),
+                        actions: [
+                          TextButton(
+                            onPressed: (){
+                              //No
                               Navigator.pop(context);
-                              navigationController.navigateTo(ReportPageRoute);
-                            }
-                          }, 
-                          child: const Text("Yes", style: TextStyle(color: Colors.red)),
-                        ),
-                      ],
-                      elevation: 24.0,
-                    )
-                  );
-                }, 
-                child: const Text("Accept")
+                            }, 
+                            child: const Text("No", style: TextStyle(color: Colors.grey)),
+                          ),
+                          TextButton(
+                            onPressed: () async {
+                              var success = await API.deleteCommuAndBan(commuId);
+                              if(success) {
+                                Navigator.pop(context);
+                                navigationController.navigateTo(ReportPageRoute);
+                              }
+                            }, 
+                            child: const Text("Yes", style: TextStyle(color: Colors.red)),
+                          ),
+                        ],
+                        elevation: 24.0,
+                      )
+                    );
+                  }, 
+                  child: const Text("Accept"),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.red,
+                    padding: EdgeInsets.all(15),
+                  ),
+                ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context, 
-                    builder: (context) => AlertDialog(
-                      title: const Text("Reject"),
-                      content: const Text("You confirm that this user doesn't do anything wrong?\nAll of the reports against this community will be deleted"),
-                      actions: [
-                        TextButton(
-                          onPressed: (){
-                            //No
-                            Navigator.pop(context);
-                          }, 
-                          child: const Text("No", style: TextStyle(color: Colors.grey)),
-                        ),
-                        TextButton(
-                          onPressed: () async {
-                            var success = await API.deleteRejectedReports(commuId);
-                            if(success) {
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context, 
+                      builder: (context) => AlertDialog(
+                        title: const Text("Reject"),
+                        content: const Text("You confirm that this user doesn't do anything wrong?\nAll of the reports against this community will be deleted"),
+                        actions: [
+                          TextButton(
+                            onPressed: (){
+                              //No
                               Navigator.pop(context);
-                              navigationController.navigateTo(ReportPageRoute);
-                            }
-                          }, 
-                          child: const Text("Yes", style: TextStyle(color: Colors.red)),
-                        ),
-                      ],
-                      elevation: 24.0,
-                    )
-                  );
-                }, 
-                child: const Text("Reject"),
-              )
+                            }, 
+                            child: const Text("No", style: TextStyle(color: Colors.grey)),
+                          ),
+                          TextButton(
+                            onPressed: () async {
+                              var success = await API.deleteRejectedReports(commuId);
+                              if(success) {
+                                Navigator.pop(context);
+                                navigationController.navigateTo(ReportPageRoute);
+                              }
+                            }, 
+                            child: const Text("Yes", style: TextStyle(color: Colors.red)),
+                          ),
+                        ],
+                        elevation: 24.0,
+                      )
+                    );
+                  }, 
+                  child: const Text("Reject"),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.grey,
+                    padding: EdgeInsets.all(15)
+                  ),
+                ),
+              ),  
             ],
           ),
           FutureBuilder<ReportedCommu>(

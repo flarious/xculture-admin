@@ -149,7 +149,10 @@ class UserInfoTable extends StatelessWidget {
                                 );
                               }
                             }, 
-                            child: const Text("Unban")
+                            child: const Text("Unban"),
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.orange
+                            ),
                           ) : Container()
                         )
                       ]

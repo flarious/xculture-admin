@@ -668,6 +668,35 @@ class API {
       return false;
     }
   }
+
+  static Future<User> getAdmin() async {
+    final userToken = await Auth.getToken();
+    http.Response response;
+    if (kIsWeb) {
+      response = await http.get(
+        Uri.parse('http://localhost:3000/user'),
+        headers: <String, String> {
+          'Authorization': 'bearer $userToken'
+        }
+      );
+    }
+    else {
+      response = await http.get(
+        Uri.parse('http://10.0.2.2:3000/user'),
+        headers: <String, String> {
+          'Authorization': 'bearer $userToken'
+        }
+      );
+    }
+
+    if(response.statusCode == 200) {
+      return User.fromJson(jsonDecode(response.body));
+    }
+    else {
+      return User(id: "", name: "", email: "", type: "", banned: 0);
+    }
+
+  }
 }
 
 class Forum {
