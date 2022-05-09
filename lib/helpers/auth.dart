@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:xculture_admin/helpers/api.dart';
 
 class Auth {
   static FirebaseAuth auth = FirebaseAuth.instance;
@@ -17,7 +18,14 @@ class Auth {
       await auth.signInWithEmailAndPassword(
         email: email, password: pass
       );
-      return true;
+      var admin = await API.getAdmin();
+      print(admin);
+      if (admin.type == "admin") {
+        return true;
+      }
+      else {
+        return false;
+      }
     } on FirebaseAuthException catch (e) {
       return false;
     }

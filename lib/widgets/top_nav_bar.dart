@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xculture_admin/constants/style.dart';
+import 'package:xculture_admin/helpers/api.dart';
+import 'package:xculture_admin/helpers/auth.dart';
 import 'package:xculture_admin/helpers/responsiveness.dart';
 import 'package:xculture_admin/widgets/theText.dart';
 //import 'package:flutter/material/scaffold.dart';
@@ -75,12 +77,22 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           color: Colors.grey[100],
         ),
         SizedBox(width: 24,),
-        TheTextWidget(
-          text: "admin1", 
-          size: 15, 
-          color: Colors.grey, 
-          weight: FontWeight.bold
-          ),
+        FutureBuilder<User>(
+          future: API.getAdmin(),
+          builder: (context, AsyncSnapshot<User> snapshot) {
+            if (snapshot.hasData) {
+              return TheTextWidget(
+                text: snapshot.data!.name, 
+                size: 15, 
+                color: Colors.grey, 
+                weight: FontWeight.bold
+                );
+            }
+            else {
+              return const LinearProgressIndicator();
+            }
+          },
+        ),
         SizedBox(height:16),
         SizedBox(width:16),
         Container(

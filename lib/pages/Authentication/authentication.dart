@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:xculture_admin/constants/controllers.dart';
 import 'package:xculture_admin/constants/style.dart';
+import 'package:xculture_admin/helpers/api.dart';
 import 'package:xculture_admin/helpers/auth.dart';
 import 'package:xculture_admin/helpers/responsiveness.dart';
 import 'package:xculture_admin/layout.dart';
@@ -119,8 +120,24 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                     _formKey.currentState!.save();
                     var success = await Auth.signIn(email!, password!);
                     if (success) {
-                      print("Signed In");
                       Get.offAll(()=> SiteLayout());
+                    }
+                    else {
+                      showDialog(
+                        context: context, 
+                        builder: (context) => AlertDialog(
+                          title: const Text("Not Admin"),
+                          content: const Text("Only admins are allowed"),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              }, 
+                              child: const Text("Ok")
+                            )
+                          ],
+                        )
+                      );
                     }
                   }
                 },
