@@ -7,23 +7,12 @@ import 'package:xculture_admin/helpers/auth.dart';
 class API {
   static Future<List<Forum>> getForums() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/forums'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/forums'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
+    final response = await http.get(
+      Uri.parse('https://xculture-server.herokuapp.com/admins/forums'),
+      headers: <String, String> {
+        'Authorization': 'bearer $userToken'
+      }
+    );
     final List<Forum> forumList = [];
 
     if(response.statusCode == 200) {
@@ -36,23 +25,12 @@ class API {
 
   static Future<StatData> getForumStat() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/forums/stat'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/forums/stat'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
+    final response = await http.get(
+      Uri.parse('https://xculture-server.herokuapp.com/admins/forums/stat'),
+      headers: <String, String> {
+        'Authorization': 'bearer $userToken'
+      }
+    );
 
     if (response.statusCode == 200) {
       return StatData.fromDateJson(jsonDecode(response.body));
@@ -64,23 +42,12 @@ class API {
 
   static Future<List<GraphData>> getForumGraph() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/forums/graph'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/forums/graph'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
+    final response = await http.get(
+      Uri.parse('https://xculture-server.herokuapp.com/admins/forums/graph'),
+      headers: <String, String> {
+        'Authorization': 'bearer $userToken'
+      }
+    );
 
     final List<GraphData> forumGraphList = [];
 
@@ -94,23 +61,12 @@ class API {
 
   static Future<ReportedForum> getReportedForum(id) async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/forums/:$id'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/forums/:$id'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
+    final response = await http.get(
+      Uri.parse('https://xculture-server.herokuapp.com/admins/forums/:$id'),
+      headers: <String, String> {
+        'Authorization': 'bearer $userToken'
+      }
+    );
 
     if (response.statusCode == 200) {
       return ReportedForum.fromJson(jsonDecode(response.body));
@@ -122,23 +78,12 @@ class API {
 
   static Future<List<Community>> getCommus() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/communities'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/communities'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
+    final response = await http.get(
+      Uri.parse('https://xculture-server.herokuapp.com/admins/communities'),
+      headers: <String, String> {
+        'Authorization': 'bearer $userToken'
+      }
+    );
 
     final List<Community> commuList = [];
 
@@ -152,24 +97,13 @@ class API {
 
   static Future<StatData> getCommuStat() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/communities/stat'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/communities/stat'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
-
+    final response = await http.get(
+      Uri.parse('https://xculture-server.herokuapp.com/admins/communities/stat'),
+      headers: <String, String> {
+        'Authorization': 'bearer $userToken'
+      }
+    );
+    
     if (response.statusCode == 200) {
       return StatData.fromDateJson(jsonDecode(response.body));
     }
@@ -180,23 +114,12 @@ class API {
 
   static Future<List<GraphData>> getCommuGraph() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/communities/graph'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/communities/graph'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/communities/graph'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     final List<GraphData> commuGraphList = [];
 
@@ -210,23 +133,12 @@ class API {
 
   static Future<ReportedCommu> getReportedCommu(id) async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/communities/:$id'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/communities/:$id'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/communities/:$id'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     if (response.statusCode == 200) {
       return ReportedCommu.fromJson(jsonDecode(response.body));
@@ -238,23 +150,12 @@ class API {
 
   static Future<List<Event>> getEvents() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/events'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/events'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/events'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     final List<Event> eventList = [];
 
@@ -268,23 +169,12 @@ class API {
 
   static Future<StatData> getEventStat() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/events/stat'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/events/stat'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/events/stat'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     if (response.statusCode == 200) {
       return StatData.fromDateJson(jsonDecode(response.body));
@@ -296,23 +186,12 @@ class API {
 
   static Future<List<GraphData>> getEventGraph() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/events/graph'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/events/graph'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/events/graph'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     final List<GraphData> eventGraphList = [];
 
@@ -326,23 +205,12 @@ class API {
 
   static Future<ReportedEvent> getReportedEvent(id) async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/events/:$id'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/events/:$id'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
+    final response = await http.get(
+      Uri.parse('https://xculture-server.herokuapp.com/admins/events/:$id'),
+      headers: <String, String> {
+        'Authorization': 'bearer $userToken'
+      }
+    );
 
     if (response.statusCode == 200) {
       return ReportedEvent.fromJson(jsonDecode(response.body));
@@ -354,23 +222,12 @@ class API {
 
   static Future<List<User>> getUsers() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/users'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/users'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/users'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     final List<User> userList = [];
 
@@ -384,23 +241,12 @@ class API {
 
   static Future<StatData> getOverviewStat() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/stat'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/stat'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/stat'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     if (response.statusCode == 200) {
       return StatData.fromOverviewJson(jsonDecode(response.body));
@@ -412,24 +258,12 @@ class API {
 
   static Future<List<Reported>> getReported() async {
     final userToken = await Auth.getToken();
-
-    http.Response response;
-    if(kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/reported'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/reported'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/reported'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     final List<Reported> reportedList = [];
 
@@ -443,23 +277,12 @@ class API {
 
   static Future<StatData> getReportedStat() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/reported/stat'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/reported/stat'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/reported/stat'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     if (response.statusCode == 200) {
       return StatData.fromReportedJson(jsonDecode(response.body));
@@ -471,23 +294,12 @@ class API {
 
   static Future<List<GraphData>> getReportedGraph() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/reported/graph'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/reported/graph'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/reported/graph'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     final List<GraphData> reportedGraphList = [];
 
@@ -501,23 +313,12 @@ class API {
 
   static Future<List<ReportDetail>> getReportDetail(id) async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/admins/reported/$id'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/reported/$id'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/admins/reported/$id'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     final List<ReportDetail> reportDetailList = [];
 
@@ -531,23 +332,12 @@ class API {
 
   static Future<bool> deleteForumAndBan(id) async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.delete(
-        Uri.parse('http://localhost:3000/admins/forums/$id'),
+    final response = await http.delete(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/forums/$id'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.delete(
-        Uri.parse('http://10.0.2.2:3000/admins/forums/$id'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     if(response.statusCode == 200) {
       return true;
@@ -559,23 +349,12 @@ class API {
 
   static Future<bool> deleteEventAndBan(id) async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.delete(
-        Uri.parse('http://localhost:3000/admins/events/$id'),
+    final response = await http.delete(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/events/$id'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.delete(
-        Uri.parse('http://10.0.2.2:3000/admins/events/$id'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     if(response.statusCode == 200) {
       return true;
@@ -587,23 +366,12 @@ class API {
 
   static Future<bool> deleteCommuAndBan(id) async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.delete(
-        Uri.parse('http://localhost:3000/admins/communities/$id'),
+    final response = await http.delete(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/communities/$id'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.delete(
-        Uri.parse('http://10.0.2.2:3000/admins/communities/$id'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     if(response.statusCode == 200) {
       return true;
@@ -615,23 +383,12 @@ class API {
 
   static Future<bool> deleteRejectedReports(id) async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.delete(
-        Uri.parse('http://localhost:3000/admins/reported/$id'),
+    final response = await http.delete(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/reported/$id'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.delete(
-        Uri.parse('http://10.0.2.2:3000/admins/reported/$id'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     if(response.statusCode == 200) {
       return true;
@@ -643,23 +400,12 @@ class API {
 
   static Future<bool> unbanUser(id) async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.put(
-        Uri.parse('http://localhost:3000/admins/users/$id/unban'),
+    final response = await http.put(
+        Uri.parse('https://xculture-server.herokuapp.com/admins/users/$id/unban'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.put(
-        Uri.parse('http://10.0.2.2:3000/admins/users/$id/unban'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     if(response.statusCode == 200) {
       return true;
@@ -671,23 +417,12 @@ class API {
 
   static Future<User> getAdmin() async {
     final userToken = await Auth.getToken();
-    http.Response response;
-    if (kIsWeb) {
-      response = await http.get(
-        Uri.parse('http://localhost:3000/user'),
+    final response = await http.get(
+        Uri.parse('https://xculture-server.herokuapp.com/user'),
         headers: <String, String> {
           'Authorization': 'bearer $userToken'
         }
       );
-    }
-    else {
-      response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/user'),
-        headers: <String, String> {
-          'Authorization': 'bearer $userToken'
-        }
-      );
-    }
 
     if(response.statusCode == 200) {
       return User.fromJson(jsonDecode(response.body));
